@@ -2,7 +2,7 @@
     width: 100%;
     height: 170px;
     border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.86);
+    -webkit-box-shadow: 0px 0px 16px -8px #000000db;
     box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.86);
 }
 
@@ -60,11 +60,11 @@
 }
 
 .shareOptions > .shareOption:nth-child(1) > .shareIcon{
-    color: tomato;
+    color: #1877f2;
 }
 
 .shareOptions > .shareOption:nth-child(2) > .shareIcon{
-    color: blue;
+    color: tomato;
 }
 
 .shareOptions > .shareOption:nth-child(3) > .shareIcon{

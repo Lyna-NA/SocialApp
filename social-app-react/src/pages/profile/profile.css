@@ -1,0 +1,11 @@
+.profileContainer{
+    display: flex;
+}
+
+.profileRight{
+    flex: 9;
+}
+
+.profileRightBottom{
+    display: flex;
+}
