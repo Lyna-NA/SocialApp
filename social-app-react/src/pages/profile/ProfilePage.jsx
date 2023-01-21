@@ -24,10 +24,14 @@ let ProfilePage = () => {
                 className="profileUserImage"
               />
             </div>
+            <div className="profileInfo">
+              <h4 className="profileInfoName">Lyna El Naffar</h4>
+              <span className="profileInfoDescription">Hello my Friends!</span>
+            </div>
           </div>
           <div className="profileRightBottom">
             <Feed />
-            <Rightbar />
+            <Rightbar profile/>
           </div>
         </div>
       </div>
