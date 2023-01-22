@@ -24,7 +24,7 @@ const router = express.Router();
  * @param :id
  * @controllerMethod show
  */
-router.get("/:id", show);
+router.get("/", show);
 
 // /**
 //  * @method POST

@@ -8,6 +8,7 @@ const {
   destroy,
   likePost,
   getTimelinePosts,
+  getUserPosts,
 } = require("../controllers/post-controller");
 const auth = require("../middlewares/auth");
 
@@ -55,7 +56,10 @@ router.delete("/:id", destroy);
 router.put("/:id/like", likePost);
 
 //get timeline posts
-router.get("/timeline/all", getTimelinePosts);
+router.get("/timeline/:userId", getTimelinePosts);
+
+//get user's posts
+router.get("/profile/:username", getUserPosts);
 
 //module: export
 module.exports = router;

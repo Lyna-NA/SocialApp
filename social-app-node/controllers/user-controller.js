@@ -7,8 +7,13 @@ const bcrypt = require("bcrypt");
 // };
 
 exports.show = async (req, res) => {
+  const userId = req.query.userId;
+  const username = req.query.username;
+
   try {
-    let response = await User.findById(req.params.id);
+    let response = userId
+      ? await User.findById({ _id: userId })
+      : await User.findOne({ username: username });
     return res.status(200).json({ status: true, data: response });
   } catch (error) {
     return res

@@ -1,14 +1,19 @@
 import "./topbar.css";
+import {Link} from "react-router-dom"
 
 const Topbar = () => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
-        <span className="logo">Lynasocial</span>
+        <Link to="/" style={{textDecoration: "none"}}>
+          <span className="logo">Lynasocial</span>
+        </Link>
       </div>
       <div className="topbarCenter">
         <div className="searchbar">
-          <span class="material-symbols-outlined searchIcon">search</span>
+          <span className="material-symbols-outlined searchIcon">search</span>
           <input
             placeholder="Search for friend, post or video"
             className="searchInput"
@@ -22,23 +27,23 @@ const Topbar = () => {
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">
-            <span class="material-symbols-outlined">person</span>
+            <span className="material-symbols-outlined">person</span>
             <span className="topbarIconBadge">1</span>
           </div>
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">
-            <span class="material-symbols-outlined">chat</span>{" "}
+            <span className="material-symbols-outlined">chat</span>{" "}
             <span className="topbarIconBadge">1</span>
           </div>
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">
-            <span class="material-symbols-outlined">notifications</span>{" "}
+            <span className="material-symbols-outlined">notifications</span>{" "}
             <span className="topbarIconBadge">3</span>
           </div>
         </div>
-        <img src="/assets/person/1.jpeg" alt="" className="topbarImage" />
+        <img src={PF + "person/1.jpeg"} alt="" className="topbarImage" />
       </div>
     </div>
   );

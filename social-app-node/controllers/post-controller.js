@@ -116,7 +116,7 @@ exports.likePost = async (req, res) => {
 
 exports.getTimelinePosts = async (req, res) => {
   try {
-    const currentUser = await User.findById(req.body.userId);
+    const currentUser = await User.findById(req.params.userId);
     const userPosts = await Post.find({ userId: currentUser._id });
     const friendPosts = await Promise.all(
       currentUser.followings.map((friendId) => {
@@ -126,6 +126,16 @@ exports.getTimelinePosts = async (req, res) => {
     return res
       .status(200)
       .json({ status: true, timelinePosts: userPosts.concat(...friendPosts) });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.getUserPosts = async (req, res) => {
+  try {
+    const currentUser = await User.findOne({ username: req.params.username });
+    const userPosts = await Post.find({ userId: currentUser._id });
+    return res.status(200).json({ status: true, userPosts: userPosts });
   } catch (error) {
     console.log(error);
   }
