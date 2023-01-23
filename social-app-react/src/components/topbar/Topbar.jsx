@@ -1,13 +1,17 @@
 import "./topbar.css";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Topbar = () => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
-        <Link to="/" style={{textDecoration: "none"}}>
+        <Link to="/" style={{ textDecoration: "none" }}>
           <span className="logo">Lynasocial</span>
         </Link>
       </div>
@@ -43,7 +47,13 @@ const Topbar = () => {
             <span className="topbarIconBadge">3</span>
           </div>
         </div>
-        <img src={PF + "person/1.jpeg"} alt="" className="topbarImage" />
+        <Link to={`/profile/${user.username}`}>
+          <img
+            src={PF + (user.profile_picture || "person/defaultImg.jpeg")}
+            alt=""
+            className="topbarImage"
+          />
+        </Link>
       </div>
     </div>
   );

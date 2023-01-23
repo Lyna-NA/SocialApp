@@ -24,13 +24,13 @@ exports.store = async (req, res) => {
   try {
     let result = await newPost.save();
     if (result != null) {
-      res.status(201).json({
+      return res.status(201).json({
         status: true,
         message: "Post createdd successfully",
         result: result,
       });
     }
-    res.status(400).json({ status: false, message: "Failed to create post" });
+    return res.status(400).json({ status: false, message: "Failed to create post" });
   } catch (error) {
     console.log(error);
   }

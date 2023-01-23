@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 exports.register = async (req, res) => {
   try {
+    console.log("req", req)
     //generate new password
     let hashedPass = bcrypt.hashSync(req.body.password, 12);
     
@@ -28,7 +29,6 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  console.log("login Controller");
   try {
     let user = await User.findOne({ email: req.body.email });
     if (user != null) {

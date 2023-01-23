@@ -1,6 +1,23 @@
+import { useContext } from "react";
+import { useRef } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { loginCall } from "./apiCalls";
 import "./login.css";
 
 let LoginPage = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const { user, isFetching, dispatch } = useContext(AuthContext);
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    loginCall(
+      { email: emailRef.current.value, password: passwordRef.current.value },
+      dispatch
+    );
+  };
+
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -11,13 +28,30 @@ let LoginPage = () => {
           </span>
         </div>
         <div className="loginRight">
-          <div className="loginBox">
-            <input placeholder="Email" className="loginInput" />
-            <input placeholder="Password" className="loginInput" />
-            <button className="loginButton">Log In</button>
+          <form className="loginBox" onSubmit={onSubmitHandler}>
+            <input
+              placeholder="Email"
+              type="email"
+              className="loginInput"
+              required
+              ref={emailRef}
+            />
+            <input
+              placeholder="Password"
+              type="password"
+              className="loginInput"
+              minLength="6"
+              required
+              ref={passwordRef}
+            />
+            <button className="loginButton" type="submit">
+              {isFetching ? "Loading" : "Log In"}
+            </button>
             <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">Create New Account</button>
-          </div>
+            <button className="loginRegisterButton">
+              "Create New Account"
+            </button>
+          </form>
         </div>
       </div>
     </div>

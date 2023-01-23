@@ -4,23 +4,25 @@ import "./feed.css";
 // import { Posts } from "../../dummyData";
 import Post from "../post/Post";
 import PostsController from "../../controllers/posts-controller";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 let Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
+  const {user} = useContext(AuthContext);
 
   let postsController = new PostsController();
+
   const fetchData = async () => {
     let response = username
       ? await postsController.readUserPosts(username)
-      : await postsController.readTimelinePosts("63cad169815804be7c7bacf1");
-    // console.log(response.timelinePosts);
+      : await postsController.readTimelinePosts(user._id);
     setPosts(response);
-    // console.log("posts:", posts);
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [username, user._id]);
 
   return (
     <div className="feed">
