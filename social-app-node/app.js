@@ -35,6 +35,8 @@ app.use("/images", express.static(path.join(__dirname, "public/images")));
 const userRoutes = require("./routes/user-routes");
 const authRoutes = require("./routes/auth-routes");
 const postRoutes = require("./routes/post-routes");
+const conversationRoute = require("./routes/conversations");
+const messageRoute = require("./routes/messages");
 
 //middleware
 app.use(express.json());
@@ -62,6 +64,9 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/conversations", conversationRoute);
+app.use("/api/messages", messageRoute);
 
 app.listen(5000, () => {
   console.log("Backend server is running!");
