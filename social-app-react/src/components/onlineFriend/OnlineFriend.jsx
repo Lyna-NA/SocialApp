@@ -7,7 +7,7 @@ const OnlineFriend = ({friend}) => {
     <li className="rightbarFriend">
       <div className="rightbarProfileImgContainer">
         <img
-          src={PF+friend.profilePicture}
+          src={PF + (friend.profile_picture || "person/defaultImg.jpeg")}
           alt=""
           className="rightbarProfileImg"
         />

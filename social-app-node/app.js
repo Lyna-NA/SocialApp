@@ -40,7 +40,11 @@ const messageRoute = require("./routes/messages");
 
 //middleware
 app.use(express.json());
-app.use(helmet());
+app.use(helmet(
+//   {
+//   crossOriginResourcePolicy: false,
+// }
+));
 app.use(morgan("common"));
 
 const storage = multer.diskStorage({
