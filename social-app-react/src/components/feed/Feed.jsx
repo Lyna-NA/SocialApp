@@ -31,7 +31,7 @@ let Feed = ({ username }) => {
   return (
     <div className="feed">
       <div className="feedWrapper">
-      {username === user.username && <SharePost />}
+      {(!username || username === user.username) && <SharePost />}
         {posts.map((element) => (
           <Post key={element._id} post={element} />
         ))}

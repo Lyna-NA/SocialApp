@@ -35,8 +35,8 @@ let SharePost = () => {
       newPost.image = fileName;
       console.log(newPost);
       try {
-      const response = await uploadController.uploadImg(data);
-      console.log(response);
+        const response = await uploadController.uploadImg(data);
+        console.log(response);
       } catch (error) {
         console.log(error);
       }
@@ -45,7 +45,7 @@ let SharePost = () => {
       await postsController.create(newPost);
       window.location.reload();
     } catch (error) {
-       console.log(error);
+      console.log(error);
     }
   };
 
@@ -65,6 +65,17 @@ let SharePost = () => {
           />
         </div>
         <hr className="shareHr" />
+        {file && (
+          <div className="shareImgContainer">
+            <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
+            <span
+              class="material-symbols-outlined shareCancelIcon"
+              onClick={() => setFile(null)}
+            >
+              cancel
+            </span>
+          </div>
+        )}
         <form className="shareBottom" onSubmit={onSubmitHandler}>
           <div className="shareOptions">
             <label htmlFor="file" className="shareOption">
